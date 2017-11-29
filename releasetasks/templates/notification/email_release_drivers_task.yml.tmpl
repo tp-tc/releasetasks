@@ -9,9 +9,15 @@ As defined at the top of release_graph.yml.tmpl
 
     {% set full_channel_name = "{}-{}".format(channel, update_channel) if update_channel else channel %}
     {% set buildername = "release-{}-{}_email_{}".format(branch, product, full_channel_name) %}
-    {% set message = (release_eta is defined and release_eta)
-           and "{} {} {} updates will be scheduled for {} channel on {} <EOM>".format(product, channel, version, full_channel_name, release_eta)
-            or "{} {} {} updates are available on the {} channel now <EOM>".format(product, channel, version, full_channel_name) %}
+    {% if update_channel %}
+      {% set message = "{} {} {} updates are available on the {} channel now <EOM>".format(product, channel, version, full_channel_name) %}
+    {% else %}
+      {% if release_eta %}
+        {% set message = "{} {} {} updates ready for sign-off on {} channel (scheduled on {}) <EOM>".format(product, channel, version, full_channel_name, release_eta) %}
+      {% else %}
+        {% set message = "{} {} {} updates ready for sign-off on {} channel now <EOM>".format(product, channel, version, full_channel_name) %}
+      {% endif %}
+    {% endif %}
 
 -
     taskId: "{{ stableSlugId(buildername) }}"

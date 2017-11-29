@@ -26,8 +26,8 @@ class TestEmailFinal(unittest.TestCase):
                 'extra': {
                     'notifications': {
                         'task-completed': {
-                            'subject': 'firefox foo 42.0b2 updates are available on the foo channel now <EOM>',
-                            'message': 'firefox foo 42.0b2 updates are available on the foo channel now <EOM>',
+                            'subject': 'firefox foo 42.0b2 updates ready for sign-off on foo channel now <EOM>',
+                            'message': 'firefox foo 42.0b2 updates ready for sign-off on foo channel now <EOM>',
                             'ids': ['release-drivers'],
                         },
                     },
@@ -95,8 +95,8 @@ class TestEmailFinalTwoChannels(unittest.TestCase):
                 'extra': {
                     'notifications': {
                         'task-completed': {
-                            'subject': 'firefox beta 42.0b2 updates are available on the beta channel now <EOM>',
-                            'message': 'firefox beta 42.0b2 updates are available on the beta channel now <EOM>',
+                            'subject': 'firefox beta 42.0b2 updates ready for sign-off on beta channel now <EOM>',
+                            'message': 'firefox beta 42.0b2 updates ready for sign-off on beta channel now <EOM>',
                             'ids': ['release-drivers'],
                         },
                     },
